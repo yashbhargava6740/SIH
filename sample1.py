@@ -1,7 +1,7 @@
 from PIL import Image
 from statistics import mode
 import cv2
-cam = cv2.VideoCapture(0)
+cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 cv2.namedWindow("test")
 
