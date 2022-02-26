@@ -42,12 +42,12 @@ alg, mud, bacteria, fit = "NO", "LOW", "Probably low", "Fit"
 DO = "Normal"
 
 if(l[0] > l[1] and l[0] > l[2]):  # CHECKING FOR REDDISH GREEN OR BROWN ALGAE
-    if(l[0]-l[1] > 50):
+    if(l[0]-l[1] > 30):
         alg,mud,fit,DO = ["No", "Filterable", "After Filtaration", "Probably Decent"]
     elif(l[0]-l[1] > 70 and l[0]-l[2] > 70):
         alg,mud,fit,DO, bacteria = ["Red", "High", "Not", "Not Good", "High"]
     if(l[0] > 100 and l[1] > 100):
-        if(l[0]-l[1] > 50):
+        if(l[0]-l[1] > 30):
             alg,mud,fit,DO, bacteria = ["Reddish Green", "High", "Not", "Not Good", "High"]
         elif(l[0]-l[1] > 10):
             alg,mud,fit,DO, bacteria = ["Greenish", "High", "Not", "Not Good", "High"]
