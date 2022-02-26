@@ -1,0 +1,86 @@
+from PIL import Image
+from statistics import mode
+
+
+
+im =Image.open('water11.jpg') # THIS HAS TO BE REPLACED WITH CAMERA FEATURE OR BROWSE FEATURE
+pix = list(im.getdata())
+
+n = len(pix)
+i=0
+
+while(i<len(pix)): #REMOVING WHITE PIXELS OR GRAY PIXELS
+    p=pix[i]
+    if(p[0]>=140 and p[1]==p[2]):
+       
+        pix.pop()
+    i=i+1
+        
+l = mode(pix)
+
+
+alg,mud,bateria,fit = "NO","LOW","Probably low",""
+DO="Normal"
+
+if(l[0]>l[1] and l[0]>l[2]):  #CHECKING FOR REDDISH GREEN OR BROWN ALGAE
+    if(l[0]-l[1]>50):
+        alg="No"
+        mud="filtrable"
+        fit="after filtration it is"
+        DO=" Probably Decent"
+        
+    elif(l[0]-l[1]>70 and l[0]-l[2]>70):
+        alg="Red"
+        mud="high"
+        fit="Not"
+        DO="Not Good"
+    if(l[0]>100 and l[1]>100):
+        if(l[0]-l[1]>50):
+            alg="reddish green"
+            mud="high"
+            DO="Not Good"
+            fit="Not"
+        elif(l[0]-l[1]>10):
+            alg="Greenish"
+            mud ="High"
+            fit ="Not"
+            Do="Not Good"
+    elif(l[0]>200 and l[1]>200):
+            alg = "Probably Low and Redish Green"
+            mud ="Low but exists"
+            fit ="Not"
+            DO="Not Good"
+    
+
+if(l[1]>l[0] and l[1]>l[2]):  #CHECKING FOR REDDISH GREEN OR BROWN ALGAE
+    if(l[0]-l[1]>50):
+        alg="No"
+        mud="filtrable"
+        fit="after filtration it is"
+        DO="Probably decent"
+    elif(l[1]-l[1]>70 and l[0]-l[2]>70):
+        alg="Green"
+        mud="high"
+        fit="Not"
+        DO="Not good"
+    if(l[0]>100 and l[1]>100):
+        if(l[1]-l[2]>50):
+            alg="Greenish red"
+            mud="high"
+            fit="Not"
+            DO="Not good"
+        elif(l[1]-l[2]>10):
+            alg="Greenish"
+            mud ="High"
+            fit ="Not"
+            DO="Not good"
+    elif(l[0]>200 and l[1]>200):
+            alg = "Probably Low and Redish Green"
+            mud ="Low but exists"
+            fit ="Not"
+            DO="Average"
+
+
+
+print("BATERIA IS ",bateria," ,Algae content :",alg," ,Mud content : ",mud,",Dissoved Oxygen Status : ",DO)
+print(fit," Fit for drnking")
