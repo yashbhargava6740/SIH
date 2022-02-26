@@ -23,6 +23,7 @@ while True:
         cv2.imwrite(img_name, frame)
         print("{} written!".format(img_name))
         img_counter += 1
+        break
     
 cam.release()
 
